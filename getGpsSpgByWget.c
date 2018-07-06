@@ -62,7 +62,7 @@ int getGpsSpg(int mcc,  /*Country, china 460*/
 
 	if(((time_t) -1) == (curTimeSecondsByUTC = time(NULL)))
 	{
-		fprintf(stderr, "%s %d, time(NULL) error: %s\n", strerror(errno));
+		fprintf(stderr, "%s %d, time(NULL) error: %s\n", __func__, __LINE__, strerror(errno));
 		goto ERR;
 	}
 	nonce = curTimeSecondsByUTC % 1000;
@@ -71,7 +71,7 @@ int getGpsSpg(int mcc,  /*Country, china 460*/
 	if(0 != access(STORE_GPS_SPG_DATA, F_OK) ||
 		NULL == (fp = fopen(STORE_GPS_SPG_DATA, "r")))
 	{
-		fprintf(stderr, "%s %d, file %s don't exist\n", STORE_GPS_SPG_DATA);
+		fprintf(stderr, "%s %d, file %s don't exist\n", __func__, __LINE__, STORE_GPS_SPG_DATA);
 		goto ERR;
 	}
 
